@@ -1,0 +1,26 @@
+set daemon <%= node['monit']['poll_period'] %>
+  with start delay <%= node['monit']['poll_start_delay'] %>
+
+set logfile syslog facility log_daemon
+
+set mailserver <%= node['monit']['mailserver'] %>
+
+set eventqueue
+  basedir /var/monit
+  slots 10000
+
+set mail-format {
+  from: <%= node['monit']['mail_format']['from'] %>
+  subject: <%= node['monit']['mail_format']['subject'] %>
+  message: <%= node['monit']['mail_format']['message'] %>
+}
+
+set alert <%= node['monit']['notify_email'] %> NOT ON { action, instance, pid, ppid }
+
+set httpd port <%= node['monit']['httpd']['port'] %> and
+  use address <%= node['monit']['httpd']['address'] %>
+  <% node['monit']['httpd']['allows'].each do |allow| -%>
+  allow <%= allow %>
+  <% end -%>
+
+include <%= ::File.join(node['monit']['etc_dir'], 'conf.d') %>
