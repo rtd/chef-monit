@@ -11,13 +11,13 @@ end
 
 template ::File.join(node['monit']['etc_dir'], 'monitrc') do
   source 'monitrc.erb'
-  mode '0600'
+  mode 0600
   notifies :restart, "service[monit]", :delayed
 end
 
 directory ::File.join(node['monit']['etc_dir'], 'monit', 'conf.d') do
   owner 'root'
-  mode '0700'
+  mode 0700
   recursive true
   action :create
 end
