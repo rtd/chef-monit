@@ -26,5 +26,5 @@ case node['platform']
 when "freebsd"
   default['monit']['etc_dir'] = "/usr/local/etc"
 else
-  default['monit']['etc_dir'] = "/etc"
+  default['monit']['etc_dir'] = "/etc/monit"
 end

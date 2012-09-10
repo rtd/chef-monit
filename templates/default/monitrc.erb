@@ -23,4 +23,4 @@ set httpd port <%= node['monit']['httpd']['port'] %> and
   allow <%= allow %>
   <% end -%>
 
-include <%= ::File.join(node['monit']['etc_dir'], 'conf.d') %>
+include <%= ::File.join(node['monit']['etc_dir'], 'monit.d') %>

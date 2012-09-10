@@ -15,7 +15,7 @@ template ::File.join(node['monit']['etc_dir'], 'monitrc') do
   notifies :restart, "service[monit]", :delayed
 end
 
-directory ::File.join(node['monit']['etc_dir'], 'monit', 'conf.d') do
+directory ::File.join(node['monit']['etc_dir'], 'monit.d') do
   owner 'root'
   mode 0700
   recursive true
