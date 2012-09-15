@@ -24,6 +24,6 @@ end
 
 service "monit" do
   action [:enable, :start]
-  supports [:start, :restart, :stop, :status]
+  supports [:start, :reload, :restart, :stop, :status]
 end
 
