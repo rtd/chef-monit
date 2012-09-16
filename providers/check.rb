@@ -7,6 +7,8 @@ action :create do
     action :create
     notifies :reload, "service[monit]", :delayed
   end
+
+  new_resource.updated_by_last_action(true)
 end
 
 action :remote do
@@ -14,4 +16,6 @@ action :remote do
     action :remove
     notifies :reload, "service[monit]", :delayed
   end
+
+  new_resource.updated_by_last_action(true)
 end
