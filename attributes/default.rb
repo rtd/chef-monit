@@ -2,6 +2,8 @@ default['monit']['packages'] = [ 'monit' ]
 
 default['monit']['poll_period']      = 60
 default['monit']['poll_start_delay'] = 60
+
+default['monit']['notify_enabled']   = true
 default['monit']['mailserver']       = 'localhost'
 default['monit']['notify_email']     = 'notify@example.com'
 

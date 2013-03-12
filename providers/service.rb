@@ -11,9 +11,9 @@ action :create do
   new_resource.updated_by_last_action(true)
 end
 
-action :remote do
-  template ::File.join(node['monit']['etc_dir'], 'monit.d', "#{new_resource.name}.conf") do
-    action :remove
+action :remove do
+  file ::File.join(node['monit']['etc_dir'], 'monit.d', "#{new_resource.name}.conf") do
+    action :delete
     notifies :reload, "service[monit]", :delayed
   end
 

@@ -3,11 +3,12 @@ set daemon <%= node['monit']['poll_period'] %>
 
 set logfile syslog facility log_daemon
 
-set mailserver <%= node['monit']['mailserver'] %>
-
 set eventqueue
   basedir /var/monit
   slots 10000
+
+<% if node['monit']['notify_enabled'] %>
+set mailserver <%= node['monit']['mailserver'] %>
 
 set mail-format {
   from: <%= node['monit']['mail_format']['from'] %>
@@ -16,6 +17,7 @@ set mail-format {
 }
 
 set alert <%= node['monit']['notify_email'] %> NOT ON { action, instance, pid, ppid }
+<% end %>
 
 set httpd port <%= node['monit']['httpd']['port'] %> and
   use address <%= node['monit']['httpd']['address'] %>
