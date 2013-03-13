@@ -11,6 +11,8 @@ Requirements
 Attributes
 ==========
 
+default['monit']['notify_enabled'] Enable or disable notifications (Default: true)
+
 Usage
 =====
 
